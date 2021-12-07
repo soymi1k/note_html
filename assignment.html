@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input id="mytext1" type="text"> -->
+    <p id="mytext1">안녕</p>
+    <div id="mydiv">
+        <h1>뚤라딸라</h1>
+        <h1 id="id01">Old Heading</h1>
+    </div>
+    <p id="demo"></p>
+
+    <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        Name:<input type="text" name="fname">
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="p2">HelloWorld!</p>
+    <h1 id="id1">My Heading 1</h1>
+    <button type="button" onclick="document.getElementById('id1').style.color= 'red'">click me!</button>
+
+    <h1>My First JavaScript Animation</h1>
+    <div id="animation">My animation will go here</div>
+    <div id="container">
+        <div id ="animate">My animation will go here</div>
+    </div>
+<style>
+    #container {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background: yellow;
+    }
+    #animate{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: red;
+    }
+</style>
+
+<h1 onclick="this.innerHTML= 'Oooops'">Click on this text!</h1>
+
+<h1 onclick="changeText(this)">Click on this text!</h1>
+
+<button onclick="displayDate()">Try it</button>
+
+<button id="myBtn">display date</button>
+<p id="displaydate"></p>
+
+<body onload="checkCookies()"></body>
+<p id="onloadphrase"></p>
+
+<input type="text" id="fname" onchange="upperCase()">
+<h1 style="color: seashell ; background: red; padding: 10px;" id="mouseover" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">Mouse Over Me</h1>
+<div style="color: seashell ; background: red; padding: 10px;" id="mouse"></div>
+    <script>
+        function mouseOver(obj) {
+            obj.innerHTML = "Thank you"
+        }
+        function mouseOut(obj) {
+            obj.innerHTML = "Mouse Over me Again"
+        }
+        // function mouseOut() {
+        //     document.getElementById("mouseover").innerHTML = "Mouse Over Me"
+        // }
+        // function mouseOver() {
+        //     document.getElementById("mouseover").innerHTML = "Thank you"
+        // }
+        function upperCase() {
+            const x = document.getElementById("fname")
+            x.value = x.value.toUpperCase()
+        }
+        function checkCookies() {
+            let text = "";
+            if (navigator.cookieEnabled == true) {
+                text = "Cookies are enabled."
+            } else {
+                text = "Cookies are not enabled."
+            }
+            document.getElementById("onloadphrase").innerHTML = text
+        }
+        document.getElementById("myBtn").onclick = displayDate;
+
+        function displayDate() {
+            document.getElementById("displaydate").innerHTML= Date()
+        }
+        function changeText(id) {
+            id.innerHTML= "Oooops!"
+        }
+        
+        document.getElementById("p2").style.color = "blue"
+    document.getElementById("mytext1").innerHTML = "Hello World!";
+    // document.getElementById("mydiv").innerHTML = "Hello World!";
+
+    const element = document.getElementById("id01");
+    element.innerHTML = "New Heading"
+    document.getElementById("demo").innerHTML = "Date : " + Date();
+    // document.write(Date())
+
+    function validateForm(){
+        let x = document.forms["myForm"]["fname"].value;
+        if (x==""){
+            alert("Name must be filled out");
+            return false;
+        }
+    }
+    </script>
+
+</body>
+</html>

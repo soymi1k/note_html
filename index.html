@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=n, initial-scale=1.0">
+    <title>css layout</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <!-- <div style="display: inline; border: darkgreen solid 3px;">
+        <div class="barcode-container">
+            <svg id="barcodeV"></svg>
+        </div>
+    </div>
+    <div style="display: inline; border: darkgreen solid 3px;"> -->
+        <div id = "content" class="wrapper">
+            <div style="display: flex;flex: 1;">
+                <div style="border: darkgreen solid 3px; height:60mm; width: 15mm; display: flex; ">
+                    <div class="barcode-container">
+                        <img id="barcodeV" ></img>
+                    </div>
+                </div>
+                <div style="border: darkgrey solid 3px; height:100px ;display: flex; flex: 2;"></div>
+            </div>
+            <!-- <div id = "box" class="box1">하나</div>
+            <div id = "box" class="box2">둘</div>
+            <div id = "box" class="box3">셋</div>
+            <div id = "box" class="box4">넷</div>
+            <div id = "box" class="box5">다섯</div>
+            <div id = "box" class="box6">여섯</div> -->
+        </div>
+    </div>
+    
+    <button onclick="generatePDF()">Download</button>
+    <button onclick="code128()">Download</button>
+    
+    
+    <script src="app.js"></script>
+    <script src="barcodeV.js"></script>
+    <script src="code128.js"></script>
+
+</body>
+</html>                     

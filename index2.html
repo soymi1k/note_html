@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bwip-js@3.0.4/dist/bwip-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+<!-- <img alt="Barcoded value 42302 2100283818 0010 001200 001"
+src="http://bwipjs-api.metafloor.com/?bcid=code128&text=42302 2100283818 0010 001200 0010&scale=3&rotate=N&includetext
+"> -->
+<div id="container" style="  
+width: 96.5mm;
+height: 96.5mm;">
+    <div style="display: flex; flex: 1;">
+        <canvas id="barVer" style="display: flex"></canvas>
+        <div style="display: flex; flex: 1;">
+            <div style="background:seashell; height: fit-content; display: flex; width: 100px;
+            text-align: justify;
+            text-align: justify;
+            text-align-last: justify;
+            letter-spacing: -0.1em;">
+                <p id="print2"></p>
+            </div>
+            <div style="background: seagreen; height: fit-content; display: flex; width: fit-content;">
+                <p id="print"></p>
+            </div>
+    
+        </div>
+        
+    </div>
+    <canvas id="barHor"></canvas>
+</div>
+
+<button onclick="generatePDF()">Download</button>
+
+<script>
+    try {
+    // The return value is the canvas element
+    let canvas = bwipjs.toCanvas('barVer', {
+            bcid:        'code128',       // Barcode type
+            text:        '4230221002838180010001200001',    // Text to encode
+            scale:       1,               // 3x scaling factor
+            height:      10,              // Bar height, in millimeters
+            includetext: false,            // Show human-readable text
+            textxalign:  'center',        // Always good to set this
+            rotate: 'R',
+        });
+    } catch (e) {
+        // `e` may be a string or Error object
+    }
+    
+    try {
+        // The return value is the canvas element
+        let canvas = bwipjs.toCanvas('barHor', {
+            bcid:        'code128',       // Barcode type
+            text:        '4230221002838180010001200001',    // Text to encode
+            // text:        '42302 2100283818 0010 001200 001',    // Text to encode
+            scale:       2,               // 3x scaling factor
+            height:      10,              // Bar height, in millimeters
+            includetext: false,            // Show human-readable text
+            textxalign:  'center',        // Always good to set this
+            paddingtop: 10
+        });
+    } catch (e) {
+    // `e` may be a string or Error object
+    }
+
+    function generatePDF() {
+        const element = document.getElementById("container");
+        const opt = {
+            margin: 1,
+            filename: "myfile.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "mm", format: [100, 100], orientation: "portrait" },
+        };
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+<script src="class.js"></script>
+    
+</body>
+</html>
